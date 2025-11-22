@@ -139,9 +139,9 @@ while True:
     elif action=="6":
         print("Void")
     elif action=="7":
-        print("Void")
+        print("Aun sin saber como guardar un CSV")
     elif action=="8":
-        print("Void")
+        print("Aun sin poder cargar un CSV")
     elif action== "9" or action=="salir":
         print("¡Has salido!")
         break

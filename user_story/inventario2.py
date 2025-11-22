@@ -23,20 +23,15 @@ while menu!=4:
         print("")
         print("")
 
-        #Uso un condicional para preguntar al ususario que quiere hacer.
+    #Uso un condicional para preguntar al ususario que quiere hacer.
         if menu ==1:
             
             print("----AGREGANDO PRODUCTOS----")
 
-
             product_name = input("Ingresa el nombre del producto: ")
             product_amount = int(input("Ingrese la cantidad del producto: "))
-        
-
             product_price = int(input("Ingrese el precio del producto: "))
             
-
-
             product = {
                 "product_name" :product_name,
                 "product_amount": product_amount,
@@ -46,13 +41,12 @@ while menu!=4:
             precio_total = product_amount*product["product_price"]
             cantidad_total +=product_amount
             precio_final+=precio_total
-            #Almacenamos los productos en una lista, (inventario).
-
+    #Almacenamos los productos en una lista, (inventario).
             inventario.append(product)
             print("")
 
         elif menu==2:
-            #Muestro un mensaje si la lista está vacía, sino, muestro la lista de productos creados
+    #Muestro un mensaje si la lista está vacía, sino, muestro la lista de productos creados
             if not inventario:
                 print("----La lista está vacía!----")
             else:
@@ -61,7 +55,7 @@ while menu!=4:
                     print(f"| Name: {product_name} | Amount: {product_amount} | Price: {product_price } |")
             print("")
         elif menu==3:
-            #Muestro la informacion de los productos creados.
+    #Muestro la informacion de los productos creados.
             print("INFORMACION DE LOS PRODUCTOS: ")
             print("")
             print(f"La cantidad de productos registrados es: {cantidad_total}")
@@ -71,11 +65,10 @@ while menu!=4:
             print("¡Has salido!")
             break
         else:
-            #Si algo diferente a 1,2,3,4, muestra un mensaje de error.
+    #Si algo diferente a 1,2,3,4, muestra un mensaje de error.
             print("**** Has elegido una opción invalida ****")
             print("")
         MenuHU2()
-            
         print("") 
 
     #Capturamos el error con except y volvemos a pedir los datos

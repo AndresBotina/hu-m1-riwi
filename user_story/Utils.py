@@ -23,18 +23,25 @@ def agregar_productoHU3():
         nombre_producto=input("Ingresa el nombre del producto: ")
 #Agregamos un ciclo while para pedir al usuario multiples veces la información correcta, en caso de no hacerlo.
         while True:
+            #Validamos que las emtrdas sean numéricas
             try:
                 cantidad_del_producto = int(input("Ingresa la cantidad: "))
+                #Validamos que cantidad sea positivo
                 if cantidad_del_producto>=0:
                     break
                 else:
-                    print("**** Ingresa un numero positivo ****")
+                    print("** Ingresa un numero positivo **")
             except ValueError:
                 print("Dato inválido, ingresa la cantidad nuevamente")
         while True:
+            #Validamos que las entradas sean numéricas
             try:
                 precio_del_producto = float(input("Ingresa el  precio: "))
-                break
+                #Validamos que precio sea positivo
+                if precio_del_producto>=0:
+                    break
+                else:
+                    print("**** Ingresa un numero positivo ****")
             except ValueError:
                 print("Dato inválido, ingresa el precio nuevamente")
     #Se crea un nuevo producto
@@ -70,11 +77,13 @@ def buscar_productoHU3(inventario_globalHU3):
         # for i,producto in enumerate(inventario_globalHU3):
         #     print(f"Item: {i+1}   | Nombre: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")# print("")
         buscar = input("Que producto quieres buscar: ")
+        print("")
         for producto in inventario_globalHU3:
             if buscar ==producto["name_product"]:
-                print(f"{buscar} : ¡Encontrado!")
+                print(f"| Producto: '{buscar}' | Estado: Encontrado | Unidades: {producto["quantity"]} | Precio: {producto['price']} |")
                 return
-        print(f"{buscar} no encontrado")
+        print("")
+        print(f"| Producto: '{buscar}' | Estado: No encontrado |")
 
 #Esta funcion se encarga de actualizar un producto del inventario existente
 def actualizar_producto(inventario_globalHU3):
@@ -82,9 +91,61 @@ def actualizar_producto(inventario_globalHU3):
         print("No hay productos en el inventario!")
     else:
         for i,producto in enumerate(inventario_globalHU3):
-            print(f"Item: {i+1}   | Nombre: {producto['name_product']} | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")
+            print(f"Item: {i+1}   | Nombre: '{producto['name_product']}' | Cantidad: {producto['quantity']} | Precio: {producto['price']:.2f} |")
         print("")
-        print("Ingresa el numero del item a actualizar: ")
+        while True:
+            try:
+                item_actualizar = int(input("Ingresa el item a actualizar: "))
+                if item_actualizar>0 and item_actualizar<=len(inventario_globalHU3):
+                    break
+                else:print("**Item fuera de rango**")
+            except:
+                print("**Entradas inválidas**")
+        producto_verificado=inventario_globalHU3[item_actualizar-1]
+        while True:
+            try:
+                nuevo_precio=int(input(f"Igresa el nuevo precio de '{producto_verificado['name_product']}' : "))
+                if nuevo_precio >=0:
+                    break
+                else:
+                    print("*No se aceptan valores negativos*")
+            except:print("*Entradas inválidas*")
+        producto_verificado['price']=nuevo_precio
+        while True:
+            try:
+                nueva_cantidad=int(input(f"Igresa la nueva cantidad de '{producto_verificado['name_product']}' : "))
+                if nueva_cantidad >=0:
+                    break
+                else:
+                    print("*No se aceptan valores negativos*")
+            except:print("*Entradas inválidas*")
+        producto_verificado['quantity']=nueva_cantidad
+
+
+def eliminar_producto():
+    print("")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def MenuHU2():
     print("_______________________")
@@ -96,4 +157,3 @@ def MenuHU2():
     print("4: Salir               ")
     print("_______________________")
     print("") 
-    
