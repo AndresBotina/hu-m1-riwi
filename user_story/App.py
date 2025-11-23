@@ -112,7 +112,7 @@
 #         Se entrega el diagrama de flujo del sistema completo (PNG/PDF).
 
 #import csv
-from Utils import MenuHU3,agregar_productoHU3,mostrar_productoHU3,buscar_productoHU3,actualizar_producto
+from Utils import MenuHU3,agregar_productoHU3,mostrar_productoHU3,buscar_productoHU3,actualizar_productoHU3,eliminar_productoHU3,estadisticas
 
 inventario_globalHU3 = []
 
@@ -121,23 +121,25 @@ while True:
     action=input("Opción: ").lower()
     print("___________________________________")
     if action=="1":
-        print("**** Agregar Producto ****")
+        print("* * * * Agregar Producto * * * *")
         nuevo_producto=agregar_productoHU3()
         inventario_globalHU3.extend(nuevo_producto)
     elif action=="2":
-        print("       ******* Inventaro ********")
+        print("       * * * * I n v e n t a r i o * * * *")
         mostrar_productoHU3(inventario_globalHU3)
     elif action=="3":
-        print("       ******* Inventaro ********")
+        print("       * * * * I n v e n t a r i o * * * *")
         buscar_productoHU3(inventario_globalHU3)
     elif action=="4":
-        print("       ******* Inventaro ********")
-        actualizar_producto(inventario_globalHU3)
+        print("       * * * * I n v e n t a r i o * * * *")
+        actualizar_productoHU3(inventario_globalHU3)
 
     elif action=="5":
-        print("Void")
+        print("       * * * * I n v e n t a r i o * * * *")
+        eliminar_productoHU3(inventario_globalHU3)
     elif action=="6":
-        print("Void")
+        print("* * * E S T A D I S T I C A S  * * *")
+        estadisticas()
     elif action=="7":
         print("Aun sin saber como guardar un CSV")
     elif action=="8":
