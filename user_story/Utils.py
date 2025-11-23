@@ -147,6 +147,7 @@ def actualizar_productoHU3(inventario_globalHU3):
 #Con esta función eliminamos completamente un producto de nuestro inventario de productos
 
 def eliminar_productoHU3(inventario_globalHU3):
+    global precio_total,cantidad_total
     if not inventario_globalHU3:
         print("** Inventario vacío **")
     else:
@@ -162,8 +163,11 @@ def eliminar_productoHU3(inventario_globalHU3):
                     break
                 else:print("** Item fuera de rango **")
             except:
-                print("** Entradas inválidas **")
+                print("** Entradas inválidas **")            
     item_verificado=inventario_globalHU3[item_seleccionado-1]
+    #Si el usuario elimina un producto, actualizamos las estadiscticas totales del inventario
+    cantidad_total -= item_verificado['quantity']
+    precio_total   -= item_verificado['quantity'] * item_verificado['price']
 
     inventario_globalHU3.pop(item_seleccionado-1)
     print(f"'{item_verificado['name_product']}' : Eliminado")
